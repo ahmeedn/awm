@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWM_Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+   <div><a class="awm" href="../index.html">Awm Store</a></div>
+
+<ul>
+    <li><a href="../index.html">Buy</a></li>
+    <li><a  href="../sell/index.html">Sell</a></li>
+    <li><a class="Activ" href="./index.html">Profile</a></li>
+
+    <li><a href="../About/index.html">About</a></li>
+   
+    
+    
+</ul>
+</header>
+    <!-- popup -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span id="closePopup" class="close">&times;</span>
+    <p id="popupMessage">⚠️ هنا رسالة الخطأ</p>
+  </div>
+</div>
+
+<div class="profile-container">
+  <img id="profilePic" class="profile-pic" src="" alt="Profile Picture">
+  <h3 class="username" id="profileName">اسم المستخدم</h3>
+  <p class="user-phone" id="profilePhone">رقم التليفون</p>
+
+  <form>
+    <input type="text" id="gpuName" placeholder="✍️ اكتب اسمك">
+    <input type="text" id="gpuPhone" placeholder="📞 اكتب رقم تليفونك">
+    <input type="file" id="gpuImage" accept="image/*">
+    <div class="preview" id="preview"></div>
+    <button id="saveBtn">💾 حفظ التغييرات</button>
+  </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

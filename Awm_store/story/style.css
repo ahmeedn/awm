@@ -1,0 +1,452 @@
+body{
+    background: #d8d8d6;
+    
+}
+*{
+    padding: 0px;
+    margin: 0px;
+}
+header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #383838;
+
+}
+
+header ul {
+    display: flex;
+    gap: 20px; /* مسافة بين العناصر */
+    margin: 0;
+    padding: 0;
+    
+}
+header ul div{
+    display: flex;
+
+
+    
+}
+
+header ul li {
+    margin-left: 10px;
+    list-style: none;
+
+    position: relative;
+    padding: 8px 14px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    border: 2px solid transparent;
+    font-weight: bold;
+    font-size: 18px;
+}
+header ul div button{
+
+        border: 0px;
+        background: rgb(255, 166, 0);
+        font-size: 17px;
+        padding: 13px;
+        cursor: pointer;
+        color: white;
+
+
+    
+}
+.allBtn{
+     border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border: 0px;
+        background: rgb(255, 166, 0);
+        font-size: 17px;
+        padding: 13px;
+        cursor: pointer;
+        color: white;
+}
+header ul  div input{
+    padding: 10px;
+    border-radius: 20px;
+    border: 0px;
+    border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+}
+header ul li a {
+    position: relative;
+    padding: 8px 14px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    border: 2px solid transparent;
+}
+
+header ul li a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid red;
+    border-radius: 20px;
+    transform: scaleX(0);
+    transform-origin: bottom;
+    transition: transform 0.5s ease;
+}
+
+header ul li a:hover::before {
+    transform: scaleX(1); /* يترسم الخط يمين */
+}
+
+
+.awm{
+    position: relative;
+    padding: 8px 14px;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: 8px;
+
+    /* 🎨 تدرج بعدد ألوان أكبر */
+    background: linear-gradient(
+        270deg,
+        #f39c12,
+        #e74c3c,
+        #8e44ad,
+        #3498db,
+        #2ecc71,
+        #1abc9c,
+        #f1c40f
+    );
+    background-size: 1000% 1000%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.main{
+    display: flex;
+    display: flex;
+    flex-wrap: wrap; /* يخلي العناصر تنزل */
+    
+    margin: 10px;
+    margin-left: 15px;
+        margin-right: 15px;
+
+}
+
+.main .item{
+position: relative; /* مهم عشان الزر يخص العنصر نفسه */
+flex: 1 1 calc(25% - 20px); /* 4 عناصر في السطر */
+    max-width: calc(25% - 20px);
+    background: #f5f5f5;
+    border-radius: 12px;
+    text-align: center;
+        background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 280px;
+    margin: 10px;
+ cursor: pointer;
+
+}
+
+
+.item:hover {
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.main .item div{
+margin: 10px;
+display: flex;
+justify-content: space-between;
+
+
+
+}
+.main .item div p{
+font-size: 18px;
+color: black;
+
+
+
+}
+
+.main .item img{
+     width: 100%;
+    height: auto;
+    display: block;
+    height: 200px;
+}
+
+.ic{
+    width: 50px;
+    position: absolute;
+    left: 130px;
+    bottom: 400px;
+
+
+    
+}
+
+.item img {
+    display: block;
+    width: 100%;
+    transition: filter 0.3s ease;
+}
+
+/* إخفاء الزر في الحالة العادية */
+.buy-btn {
+    position: absolute;
+    top: 50%;
+    left: 44%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    width: 100px;
+
+    padding: 15px;
+    border-radius: 50%;
+}
+
+/* عند الـ hover على .item */
+.item:hover img {
+
+    filter: blur(1.5px) brightness(0.7); /* يعمل blur ويغمق الخلفية */
+}
+
+.item:hover .buy-btn {
+    opacity: 1; /* يظهر الزر */
+}
+
+.item:hover{
+    transform: scale(1.1);
+}
+
+
+.main .item .buyMan{
+    color: black;
+    font-weight: bold;
+    margin-right: 200px;
+
+}
+.Activ{
+
+
+    color: red;
+
+}
+:root{
+  --bg: #0b0f14;
+  --card: rgba(255,255,255,0.06);
+  --card-border: rgba(255,255,255,0.18);
+  --text: #e8eef4;
+  --muted: #9aa7b3;
+  --accent: #4cc9f0;        /* لون التركيز */
+  --accent-2: #a1ffce;      /* تدرج إضافي */
+  --danger: #ff6b6b;
+  --shadow: 0 10px 35px rgba(0,0,0,.35);
+}
+.logOut{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: min(92vw, 90px);
+    height: 48px;
+  border-radius: 12px;
+  border: 0;
+  cursor: pointer;
+  color: #000000;
+  font-weight: bold;
+  top: 400px;
+  letter-spacing: .3px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  box-shadow: 0 8px 24px rgba(76,201,240,.35);
+  transition: transform .08s ease, box-shadow .25s ease, filter .2s ease;
+}
+
+
+.logOut:hover{
+  box-shadow: 0 10px 30px rgba(76,201,240,.5);
+  filter: brightness(1.03);
+}
+
+.logOut:active{
+  transform: translateY(1px) scale(.995);
+}
+.allpro{
+    display: flex;
+}
+.imgpro {
+  background-image: url("./Profile/1.jpg");
+  background-size: cover;
+background-position: center;
+
+
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  /* إطار متدرج احترافي */
+  border: 3px solid transparent;
+  background-clip: content-box, border-box;
+  background-origin: border-box;
+
+  /* ظل ناعم */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+
+  /* أنميشن دخول */
+  transform: scale(0.8);
+  opacity: 0;
+  animation: popIn 0.8s ease forwards;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* تأثير عند مرور الماوس */
+.imgpro:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+.namepro {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff; /* لون أنيق */
+  margin-top: 12px;
+  margin-left: 10px;
+
+  /* خط مميز */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  /* تأثير خفيف */
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+
+  /* أنميشن ظهور */
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* عند الوقوف عليه */
+.namepro:hover {
+  color: #2575fc; /* يتغير للون أزرق جذاب */
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+.user-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.user-box .imgpro {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.user-box .namepro {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+@media (max-width: 480px) {
+.aws{
+  position:relative;
+  top: 200px;
+  right: 230px;
+  z-index: 999;
+  display: none;
+}
+  header {
+    flex-direction: column;
+    padding: 15px;
+  }
+button{
+width: 20%;
+}
+  .main .item {
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin: 10px 0;
+    transform: scale(1) !important;
+  }
+
+  .item img {
+    height: 150px;
+  }
+
+  .buy-btn {
+    width: 20px;
+    padding: 12px;
+  }
+
+  .awm {
+    font-size: 20px;
+  }
+
+  header ul div input {
+    width: 120px;
+  }
+
+  .logOut {
+    width: 50%;
+    right: 240px;
+    position: fixed;
+    top: 350px;
+  }
+
+  .namepro {
+    font-size: 16px;
+  }
+
+  .user-box .namepro {
+    font-size: 12px;
+  }
+header ul li {
+    margin-left: -32px;
+    list-style: none;
+    position: relative;
+    padding: 8px 14px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    border: 2px solid transparent;
+    font-weight: bold;
+    font-size: 18px;
+}
+.ul{
+  gap: 0;
+}
+}

@@ -1,0 +1,367 @@
+body{
+    background: #000000;
+    overflow: hidden;
+
+}
+*{
+    padding: 0px;
+    margin: 0px;
+}
+header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #383838;
+
+}
+
+header ul {
+    display: flex;
+    gap: 20px; /* مسافة بين العناصر */
+    margin: 0;
+    padding: 0;
+    
+}
+header ul div{
+    display: flex;
+
+
+    
+}
+
+header ul li {
+    margin-left: 10px;
+    list-style: none;
+
+    position: relative;
+    padding: 8px 14px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    border: 2px solid transparent;
+    font-weight: bold;
+    font-size: 18px;
+}
+header ul li a {
+    position: relative;
+    padding: 8px 14px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    border: 2px solid transparent;
+}
+
+header ul li a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid red;
+    border-radius: 20px;
+    transform: scaleX(0);
+    transform-origin: bottom;
+    transition: transform 0.5s ease;
+}
+
+header ul li a:hover::before {
+    transform: scaleX(1); /* يترسم الخط يمين */
+}
+.Activ{
+
+
+    color: red;
+
+}
+.awm{
+    position: relative;
+    padding: 8px 14px;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: 8px;
+
+    /* 🎨 تدرج بعدد ألوان أكبر */
+    background: linear-gradient(
+        270deg,
+        #f39c12,
+        #e74c3c,
+        #8e44ad,
+        #3498db,
+        #2ecc71,
+        #1abc9c,
+        #f1c40f
+    );
+    background-size: 1000% 1000%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.main{
+    
+    padding: 30px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    
+}
+
+
+.main input{
+    width: 200px;
+    height: 30px;
+    border-radius: 20px;
+    border: 0px;
+    padding: 8px;
+}
+.main button{
+    width: 200px;
+    height: 30px;
+    border-radius: 20px;
+    border: 0px;
+    padding: 8px;
+    background: orange;
+    color: white;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.main button:hover{
+    width: 200px;
+    height: 30px;
+    border-radius: 20px;
+    border: 0px;
+    padding: 8px;
+    background: rgb(173, 113, 0);
+    color: white;
+}
+.text{
+    color: white;
+    font-size: 100px;
+    border-radius: 20px;
+}
+
+footer {
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #383838;
+  height: 11vh;
+  position: fixed;     /* يثبت تحت */
+  bottom: 0;           /* لزقه أسفل الشاشة */
+  left: 0;
+  width: 100%;         /* عرضه يملأ الشاشة */
+  border-radius: 20px 20px 0 0; /* حواف ناعمة من فوق */
+}
+
+
+
+footer ul {
+    display: flex;
+    gap: 20px; /* مسافة بين العناصر */
+    margin: 0;
+    padding: 0;
+    
+}
+
+footer ul li {
+    margin-left: 10px;
+    list-style: none;
+
+    position: relative;
+    padding: 8px 14px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    border: 2px solid transparent;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+footer ul li a {
+    position: relative;
+    padding: 8px 14px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    border: 2px solid transparent;
+}
+
+footer ul li a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid red;
+    border-radius: 20px;
+    transform: scaleX(0);
+    transform-origin: bottom;
+    transition: transform 0.5s ease;
+}
+footer ul li a:hover::before {
+    transform: scaleX(1); /* يترسم الخط يمين */
+}
+
+.fe::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid #2383c4;
+    border-radius: 20px;
+    transform: scaleX(0);
+    transform-origin: bottom;
+    transition: transform 0.5s ease;
+}
+.fe:hover::before {
+    transform: scaleX(1); /* يترسم الخط يمين */
+}
+
+.Wh::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid rgb(0, 131, 0);
+    border-radius: 20px;
+    transform: scaleX(0);
+    transform-origin: bottom;
+    transition: transform 0.5s ease;
+}
+.Wh:hover::before {
+    transform: scaleX(1); /* يترسم الخط يمين */
+}
+img {
+  width: 200px;
+  border-radius: 90px;
+  display: block;
+  opacity: 0;                /* مخفية */
+  transform: scale(0.3);     /* مصغرة */
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* لما نضيف الكلاس active للصورة */
+img.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+.main::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  border-radius: 30px;
+  background: transparent;
+  pointer-events: none;
+  z-index: -1;
+  background-image: radial-gradient(2px 2px at 20px 30px, white, transparent),
+                    radial-gradient(2px 2px at 80px 120px, white, transparent),
+                    radial-gradient(2px 2px at 150px 80px, white, transparent),
+                    radial-gradient(2px 2px at 60px 160px, white, transparent),
+                    radial-gradient(2px 2px at 180px 40px, white, transparent);
+  background-size: 200px 200px;
+  animation: starsMove 8s linear infinite;
+}
+
+/* حركة النجوم */
+@keyframes starsMove {
+  from { background-position: 0 0, 0 0, 0 0, 0 0, 0 0; }
+  to   { background-position: 200px 200px, -200px 200px, 200px -200px, -200px -200px, 200px 0; }
+}
+@media (max-width: 480px) {
+.aws{
+  position:relative;
+  top: 200px;
+  right: 230px;
+  z-index: 999;
+  display: none;
+}
+  header {
+    flex-direction: column;
+    padding: 15px;
+  }
+button{
+width: 20%;
+}
+  .main .item {
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin: 10px 0;
+    transform: scale(1) !important;
+  }
+
+  .item img {
+    height: 150px;
+  }
+
+  .buy-btn {
+    width: 20px;
+    padding: 12px;
+  }
+
+  .awm {
+    font-size: 20px;
+  }
+
+  header ul div input {
+    width: 120px;
+  }
+
+  .logOut {
+    width: 50%;
+    right: 240px;
+    position: fixed;
+    top: 350px;
+  }
+
+  .namepro {
+    font-size: 16px;
+  }
+
+  .user-box .namepro {
+    font-size: 12px;
+  }
+header ul li {
+    margin-left: -50px;
+    list-style: none;
+    position: relative;
+    padding: 8px 14px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    border: 2px solid transparent;
+    font-weight: bold;
+    font-size: 18px;
+}
+.ul{
+  gap: 0;
+}
+footer {
+    padding: 0px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #383838;
+    height: 8vh;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 95%;
+    border-radius: 20px 20px 0 0;
+}
+}
+
+

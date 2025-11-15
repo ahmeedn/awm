@@ -1,0 +1,9 @@
+[
+  {
+    "name": "bmw",
+    "price_egp": 3000000,
+    "images":["./item/2.jpg"],
+    "ownerName":"Ahmed AWM",
+    "ownerImage":"./About/1.jpg"
+  }
+]

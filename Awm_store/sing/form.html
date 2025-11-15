@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    <link rel="stylesheet" href="form.css">
+  </head>
+  <body>
+    
+<div class="main2">
+    <input type="text" placeholder="first name"required minlength="3" maxlength="15" pattern="[A-Za-z0-9]+">
+    <input type="text" placeholder="last name"required minlength="3" maxlength="15" pattern="[A-Za-z0-9]+">
+    <input type="text" placeholder="user name" required minlength="3" maxlength="15" pattern="[A-Za-z0-9]+">
+    <input type="password" placeholder="password"  required minlength="6">
+    <button>sing up</button>
+    <a href="../index.html">log in</a>
+</div>
+
+
+    <script>let firstName = document.getElementsByTagName("input")[0];
+let lastName = document.getElementsByTagName("input")[1];
+let userName = document.getElementsByTagName("input")[2];
+let password = document.getElementsByTagName("input")[3];
+let btn = document.getElementsByTagName("button")[0];
+let main = document.querySelector(".main2");
+
+btn.onclick = function (e) {
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let userIdCounter = JSON.parse(localStorage.getItem("userIdCounter")) || 0; // عداد
+
+  let userData = {
+    id: userIdCounter, // 👈 id unique
+    firstName: firstName.value,
+    lastName: lastName.value,
+    userName: userName.value,
+    password: password.value,
+    phone: "",  // 👈 تفضل فاضية لحد ما يضيفها المستخدم
+    image: ""   // 👈 تفضل فاضية برضه
+  };
+  
+  if (
+    userData.firstName === "" ||
+    userData.lastName === "" ||
+    userData.userName === "" ||
+    userData.password === ""
+  ) {
+    let diverror = document.createElement("div");
+    let diverrorOK = document.createElement("div");
+    diverror.className = "error";
+    diverrorOK.className = "errorOK";
+    diverror.textContent = "يرجى ملء جميع الخانات";
+    diverrorOK.textContent = "OK";
+    main.style.filter = "blur(5px)";
+ 
+    document.body.appendChild(diverror);
+    document.body.appendChild(diverrorOK);
+
+    diverrorOK.onclick = function(){
+      diverror.remove();
+      diverrorOK.remove();
+      main.style.filter = "";
+    }
+  } else {
+    let exist = users.some(u => u.userName === userData.userName);
+    if (exist) {
+      let diverror = document.createElement("div");
+      let diverrorOK = document.createElement("div");
+      diverror.className = "error";
+      diverrorOK.className = "errorOK";
+      diverror.textContent = "اسم المستخدم موجود بالفعل ❌";
+      diverrorOK.textContent = "OK";
+      main.style.filter = "blur(5px)";
+  
+      document.body.appendChild(diverror);
+      document.body.appendChild(diverrorOK);
+  
+      diverrorOK.onclick = function(){
+        diverror.remove();
+        diverrorOK.remove();
+        main.style.filter = "";
+      }
+      return;
+    }
+
+    // زود العداد واحفظه
+    userIdCounter++;
+    localStorage.setItem("userIdCounter", JSON.stringify(userIdCounter));
+
+    users.push(userData);
+    localStorage.setItem("users", JSON.stringify(users));
+
+    let diverror = document.createElement("div");
+    diverror.className = "error";
+    diverror.textContent = "تم التسجيل بنجاح ✅";
+    main.style.filter = "blur(5px)";
+ 
+    document.body.appendChild(diverror);
+
+    setTimeout(() => {
+      window.open("../index.html", "_self"); 
+    }, 3000);
+  }
+};
+
+  
+  </script>
+</body>
+</html>

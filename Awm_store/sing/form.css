@@ -1,0 +1,205 @@
+
+:root{
+  --bg: #0b0f14;
+  --card: rgba(255,255,255,0.06);
+  --card-border: rgba(255,255,255,0.18);
+  --text: #e8eef4;
+  --muted: #9aa7b3;
+  --accent: #4cc9f0;        /* لون التركيز */
+  --accent-2: #a1ffce;      /* تدرج إضافي */
+  --danger: #ff6b6b;
+  --shadow: 0 10px 35px rgba(0,0,0,.35);
+}
+
+/* خلفية عامة (اختياري) */
+body{
+  background: radial-gradient(1200px 800px at 20% -10%, #16202a 0%, #0b0f14 60%, #070b0f 100%);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+}
+
+/* ===== كارت تسجيل الدخول ===== */
+/* ===== الكارت ===== */
+.main2{
+  width: min(92vw, 420px);
+  padding: 28px 26px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: grid;
+  gap: 14px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+
+/* خلفية نبض نيون بدل الدائرة */
+.main2::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(76,201,240,.4), rgba(161,255,206,.4));
+  filter: blur(25px);
+  z-index:-1;
+  opacity: .6;
+  animation: pulse 6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: .3; transform: scale(1); }
+  50%      { opacity: .7; transform: scale(1.05); }
+}
+
+
+/* ===== الحقول ===== */
+.main2 input{
+
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.15);
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+  padding: 0 16px 0 16px;
+  outline: none;
+  transition: border-color .25s ease, box-shadow .25s ease, background .25s ease, transform .08s ease;
+  caret-color: var(--accent);
+}
+
+.main2 input::placeholder{
+  color: var(--muted);
+  opacity: .85;
+}
+
+/* حالة التركيز */
+.main2 input:focus{
+  border-color: color-mix(in oklab, var(--accent) 70%, white 0%);
+  background: rgba(255,255,255,.09);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 22%, transparent 78%);
+  transform: translateY(-1px);
+}
+
+/* تحقق مبدئي بالمتصفح */
+.main2 input:user-valid{
+  border-color: color-mix(in oklab, var(--accent-2) 70%, white 0%);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent-2) 18%, transparent 82%);
+}
+.main2 input:user-invalid:focus{
+  border-color: var(--danger);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--danger) 25%, transparent 75%);
+}
+
+/* ===== الزر ===== */
+.main2 button{
+  height: 48px;
+  border-radius: 12px;
+  border: 0;
+  cursor: pointer;
+  color: #0b0f14;
+  font-weight: 700;
+  letter-spacing: .3px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  box-shadow: 0 8px 24px rgba(76,201,240,.35);
+  transition: transform .08s ease, box-shadow .25s ease, filter .2s ease;
+}
+
+.main2 button:hover{
+  box-shadow: 0 10px 30px rgba(76,201,240,.5);
+  filter: brightness(1.03);
+}
+
+.main2 button:active{
+  transform: translateY(1px) scale(.995);
+}
+
+/* ===== رابط التسجيل ===== */
+.main2 a{
+  display: inline-block;
+  text-align: center;
+  margin-top: 2px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .2s ease, text-shadow .2s ease;
+}
+.main2 a:hover{
+  color: var(--text);
+  text-shadow: 0 0 18px rgba(161,255,206,.4);
+}
+
+/* ===== تقسيم بصري بسيط ===== */
+.main2 input[type="text"]{ margin-top: 4px; }
+.main2 input + input{ margin-top: 6px; }
+.main2 input + button{ margin-top: 4px; }
+
+/* ===== دعم الدارك/اللايت تلقائي (اختياري) ===== */
+@media (prefers-color-scheme: light){
+  :root{
+    --bg: #f4f6f8;
+    --card: rgba(255,255,255,.7);
+    --card-border: rgba(0,0,0,.06);
+    --text: #0f1720;
+    --muted: #5a6b7a;
+    --shadow: 0 12px 35px rgba(0,0,0,.12);
+  }
+  body{ background: radial-gradient(1100px 700px at 15% -8%, #ffffff 0%, #f4f6f8 60%, #eef2f6 100%); }
+  .main2 input{ background: rgba(0,0,0,.04); }
+}
+
+
+.error{
+  width: min(92vw, 420px);
+  height: 200px;
+  padding: 28px 26px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+ justify-content: center;
+ font-size: 30px;
+ color: white;
+  gap: 14px;
+  position: fixed;
+  isolation: isolate;
+  overflow: hidden;
+  z-index: 1;
+}
+.errorOK{
+  position: fixed;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: min(92vw, 80px);
+    height: 48px;
+  border-radius: 12px;
+  border: 0;
+  cursor: pointer;
+  color: #0b0f14;
+  font-weight: 700;
+  top: 400px;
+  letter-spacing: .3px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  box-shadow: 0 8px 24px rgba(76,201,240,.35);
+  transition: transform .08s ease, box-shadow .25s ease, filter .2s ease;
+}
+
+
+.errorOK:hover{
+  box-shadow: 0 10px 30px rgba(76,201,240,.5);
+  filter: brightness(1.03);
+}
+
+.errorOK:active{
+  transform: translateY(1px) scale(.995);
+}

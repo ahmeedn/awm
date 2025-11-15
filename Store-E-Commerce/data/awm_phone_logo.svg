@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400">
+  <defs>
+    <style type="text/css"><![CDATA[
+      .brand { font-family: "Segoe UI", "Noto Sans Arabic", "Arial", sans-serif; fill: #37474F; font-weight: 700; }
+      .arabic { font-family: "Noto Sans Arabic", "Arial", sans-serif; fill: #37474F; font-weight: 700; }
+      .accent { fill: #1E88E5; }
+    ]]></style>
+  </defs>
+
+  <!-- Phone icon -->
+  <g transform="translate(60,40)">
+    <rect x="0" y="0" rx="36" ry="36" width="200" height="320" fill="#000000"/>
+    <rect x="22" y="28" width="156" height="244" rx="8" ry="8" class="accent"/>
+    <circle cx="100" cy="290" r="16" fill="#FFFFFF"/>
+    <rect x="78" y="10" width="44" height="10" rx="5" ry="5" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Text: AWM -->
+  <text x="340" y="150" font-size="120" class="brand">AWM</text>
+
+  <!-- Arabic text: فون -->
+  <text x="340" y="260" font-size="96" class="arabic">فون</text>
+
+  <!-- Optional tagline line -->
+  <line x1="340" y1="280" x2="760" y2="280" stroke="#E0E0E0" stroke-width="2" opacity="0.4"/>
+</svg>

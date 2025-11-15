@@ -1,0 +1,474 @@
+ body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+ }
+ #acthv{
+              transform: scale(1.3);
+ }
+ 
+ header{
+border: 1px solid rgba(0, 0, 0, 0.363);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 15%;
+ }
+.Search{
+
+   display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-right: 100px;
+}
+.re{
+  position: relative;
+border: 1px solid rgba(0, 0, 0, 0.363);
+  width: 80%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+padding: 10px;
+margin: 10px;
+  border-radius: 19px;
+  transition: .5s;
+}
+.re:hover{
+  cursor: pointer;
+  background: rgb(146, 146, 146);
+}
+
+
+
+ .totatl{
+border-bottom: 1px solid rgba(0, 0, 0, 0.363);
+         height: 5%;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+  }
+
+
+ 
+
+
+.input{
+    width: 400px;
+    font-size: 20px;
+    padding: 9px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    background: fixed;
+    cursor: default;
+
+}
+
+  .logo img{
+    width: 350px;
+
+
+ }
+
+
+ .btnSearch{
+    position: relative;
+    right:55px;
+    top: 1px;
+    display: none;
+    font-size: 17px;
+    padding: 7px;
+    background: fixed;
+        border:0;
+            border-radius: 12px;
+            transition: .5s;
+            cursor: pointer;
+            font-weight: 500;
+ }
+
+
+ .list ul{
+list-style: none;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 100px;
+padding: 10px;
+ }
+ 
+    .list ul a{
+        color: black;
+        cursor: pointer;
+        transition: .5s;
+        
+    }
+    .list ul a:hover{
+            transform: scale(1.2);
+    }
+
+.p1{
+  margin-top: 50px;
+  width:180px;          
+  white-space: normal;    
+  word-wrap: break-word;   
+    
+}
+.p1:hover{
+cursor:pointer;
+border-bottom:1px solid rgba(0, 0, 0, 0.918);
+}
+.p2{
+border: 1px solid rgba(0, 0, 0, 0.397);
+    transition: .5s;
+}
+.p2:hover{
+    color:green ;
+    cursor:pointer;
+}
+.divp{
+    border: 1px solid rgba(0, 0, 0, 0.205);
+    height: 200px;
+      font-family: cursive;
+      cursor: default;
+      border: 1px solid rgba(0, 0, 0, 0.397);
+      padding: 5px;
+      border-radius: 14px;
+}
+
+  .btnSearch:hover{
+ 
+    transform: scale(1.2);
+
+  }
+
+
+  .main{
+
+        height: 85%;
+  }
+
+  .cont{
+
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    gap: 1px;
+  height: 89%;
+
+
+    
+  }
+  .item{
+    height: 100%;
+    width: 50%;
+
+    display: flex;
+    justify-content: start;
+    align-items: start;
+flex-wrap: wrap;
+    cursor: pointer;
+    margin-top: 30px;
+white-space: normal;
+  word-wrap: break-word;
+  overflow: auto;
+  }
+  .ItemB{
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.63);
+          border-radius: 14px;
+  }
+.buy{
+  
+     width: 50%;
+     height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.item p {
+font-family: ui-monospace;
+      cursor: default;
+font-weight: bold;
+      padding: 5px;
+      border-radius: 14px;
+}
+.numCart{
+    position: absolute;
+    top: 30px;
+    right: 730px;
+    background: orange;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+  .ItemB img{
+    width: 200px;
+    transition: .5s;
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .ItemB img:hover{
+    transform: scale(0.9);
+  }
+    .loader {
+    display: block;
+    z-index: 999;
+    position: fixed;
+ width: 50px;
+  height: 50px;
+  border: 5px solid #ccc;          /* لون الخلفية */
+  border-top: 5px solid #ff0000;   /* لون الدوران */
+  border-radius: 50%;              /* دائرة */
+  animation: spin .5s linear infinite;
+  margin: 100px auto;              /* توسيط */
+}
+
+/* حركة الدوران */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.order-summary {
+  width: 60%;
+  height: auto;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  font-family: "Segoe UI", sans-serif;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 50px;
+}
+
+.order-summary h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.coupon {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.coupon input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.coupon button {
+  background: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.coupon button:hover {
+  background: #125ec9;
+}
+
+.offers {
+  display: inline-block;
+  color: #1a73e8;
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 15px;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.free {
+  color: green;
+  font-weight: bold;
+}
+
+.total {
+  margin-top: 10px;
+}
+
+.total p {
+  margin: 0;
+  color: #666;
+}
+
+.total h2 {
+  margin: 5px 0;
+  color: #222;
+}
+
+.installment {
+  background: #f9f7f2;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 13px;
+  margin: 15px 0;
+}
+
+.checkout {
+  width: 100%;
+  background: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.checkout:hover {
+  background: #125ec9;
+}
+.msg {
+  transition: .5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: -10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  /* 🔸 أزلنا الخلفية */
+  background: transparent;
+
+  color: #e90000; /* أخضر فلوس */
+  font-size: 35px;
+  font-weight: bold;
+  text-align: center;
+  
+  width: 400px;
+  height: 100px;
+  border-radius: 15px;
+
+  /* ظل أنيق مع نفس الإحساس السابق */
+
+
+  animation: moneyGlow 1.5s infinite alternate;
+  z-index: 9999;
+  overflow: hidden;
+  white-space: nowrap;
+  backdrop-filter: blur(4px); /* يعطي شفافية زجاجية جميلة */
+}
+
+
+
+
+
+
+@media (max-width: 600px) {
+  html, body,.item,.buy {
+
+  overflow-x: hidden;
+}
+ 
+  header{
+    width: 500px;
+    
+  }
+  .logo  img{
+    width: 200px;
+  }
+  .logo{
+    width: 0px;
+  }
+   .logo img{
+    width: 0px;
+  }
+  ul{
+    position: relative;
+    left: -90px;
+    margin-left: 80px;
+  }
+    .input{
+      top: 110px;
+      right: 400px;
+      position: relative;
+    width:300px;
+ 
+  }
+  .btnSearch{
+    top: 110px;
+      right: 450px;
+      position: relative;
+  }
+  .item{
+    width: 400px;
+    margin-left: 40px;
+  }
+
+ .buy{
+  width: 500px;
+  position: absolute;
+  top:600px;
+  
+ }
+
+}
+
+/* تابلت */
+@media (min-width: 601px) and (max-width: 992px) {
+
+  .input{
+    width:200px;
+    margin-left: 50px;
+  }
+  .logo{
+    width: 0px;
+  }
+   .logo img{
+    width: 0px;
+  }
+  .cont{
+    gap: 100px;
+  }
+  ul{
+    margin-left: 30px;
+  }
+  .buy{
+    width: 700px;
+  }
+  
+}
+
+/* ديسك توب */
+@media (min-width: 993px) and (max-width: 1200px) {
+
+
+  .input {
+    width: 200px;
+    margin-left: 50px;
+  }
+}

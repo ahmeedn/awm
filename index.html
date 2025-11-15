@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed AWM - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00ff88;
+            --secondary: #0a192f;
+            --text: #8892b0;
+            --text-light: #ccd6f6;
+            --bg-dark: #0a192f;
+            --bg-light: #112240;
+            --accent: #00bfff;
+            
+        }
+        a , .profile-container{
+                        cursor: none;
+
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+            cursor: none;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(20px);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.1);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 5px rgba(0, 255, 136, 0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.8)); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 60px;
+            list-style: none;
+            margin-right: 100px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 10px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            position: relative;
+            overflow: hidden;
+            gap: 100px;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 20px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero h2 {
+            font-size: 70px;
+            background: linear-gradient(135deg, var(--text-light), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+            font-weight: 900;
+        }
+
+        .hero h3 {
+            font-size: 50px;
+            color: var(--text);
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease 0.6s backwards;
+            line-height: 1.8;
+            
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 18px 45px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 191, 255, 0.1));
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.4s;
+            animation: fadeInUp 0.8s ease 0.8s backwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+
+        .cta-btn:hover {
+            background: rgba(0, 255, 136, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+
+        /* Profile Image Container */
+        .profile-container {
+            position: relative;
+            z-index: 1;
+            animation: fadeInRight 1s ease 0.5s backwards;
+        }
+
+        .profile-image {
+            cursor:pointer;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            position: relative;
+            animation: float-profile 6s ease-in-out infinite;
+        }
+
+        @keyframes float-profile {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid rgba(0, 255, 136, 0.3);
+            box-shadow: 
+                0 0 40px rgba(0, 255, 136, 0.4),
+                0 0 80px rgba(0, 191, 255, 0.2),
+                inset 0 0 40px rgba(0, 255, 136, 0.1);
+            transition: all 0.3s;
+        }
+
+        .profile-image:hover img {
+            transform: scale(1.05);
+            box-shadow: 
+                0 0 60px rgba(0, 255, 136, 0.6),
+                0 0 100px rgba(0, 191, 255, 0.4),
+                inset 0 0 60px rgba(0, 255, 136, 0.2);
+        }
+
+        /* Decorative circles around image */
+        .profile-image::before,
+        .profile-image::after {
+            content: '';
+            position: absolute;
+                                    cursor: none;
+
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            opacity: 0.3;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .profile-image::before {
+            width: 420px;
+            height: 420px;
+            top: -10px;
+            left: -10px;
+        }
+
+        .profile-image::after {
+            width: 440px;
+            height: 440px;
+            top: -20px;
+            left: -20px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.05); opacity: 0.5; }
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.15), transparent 70%);
+            animation: float 20s infinite;
+        }
+
+        .circle:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .circle:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            top: 60%;
+            left: 70%;
+            animation-delay: 5s;
+        }
+
+        .circle:nth-child(3) {
+            width: 250px;
+            height: 250px;
+    top: 60%;            left: 20%;
+            animation-delay: 10s;
+        }
+
+        /* Sections */
+        .section {
+            padding: 120px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 45px;
+            color: var(--text-light);
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 70%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 19px;
+            line-height: 2;
+            color: var(--text);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(0, 191, 255, 0.05));
+            padding: 20px 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            font-size: 16px;
+        }
+
+        .skill-item:hover {
+            transform: translateX(-10px);
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 191, 255, 0.1));
+            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.2);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, var(--bg-light), rgba(17, 34, 64, 0.8));
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s;
+            border: 1px solid rgba(0, 255, 136, 0.1);
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 191, 255, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 5555;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .project-content {
+            padding: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-title {
+            font-size: 26px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .project-desc {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 8px 18px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 191, 255, 0.15));
+            color: var(--primary);
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.25), rgba(0, 191, 255, 0.25));
+            transform: translateY(-2px);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-content h2 {
+            font-size: 55px;
+            background: linear-gradient(135deg, var(--text-light), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .contact-content p {
+            font-size: 19px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, var(--bg-light), var(--bg-dark));
+            color: var(--text);
+            border-top: 1px solid rgba(0, 255, 136, 0.1);
+            font-size: 15px;
+        }
+
+        /* Cursor Glow */
+        .cursor-glow {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            pointer-events: none;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.2) 0%, transparent 70%);
+            mix-blend-mode: screen;
+            transform: translate(-50%, -50%);
+            transition: transform 0.05s linear;
+            z-index: 9999;
+        }
+
+        /* Rope Trail Effect */
+        .rope-segment {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+            transition: all 0.1s ease-out;
+        }
+
+        /* Apple Collection Game */
+        .apple {
+            position: fixed;
+            font-size: 30px;
+            transition: all 0.3s;
+            z-index: 100;
+            animation: appleFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.6));
+            z-index: 9999999999;
+        }
+
+        .apple:hover {
+            transform: scale(1.2) rotate(10deg);
+            filter: drop-shadow(0 0 20px rgba(255, 107, 107, 1));
+        }
+
+        @keyframes appleFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        .apple.collected {
+            animation: appleCollect 0.5s ease-out forwards;
+        }
+
+        @keyframes appleCollect {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5) rotate(180deg); opacity: 0.8; }
+            100% { transform: scale(0) rotate(360deg); opacity: 0; }
+        }
+
+        /* Score Board */
+        .score-board {
+            position: fixed;
+            top: 7px;
+            right: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            padding: 10px;
+            gap: 10px;
+            border-radius: 15px;
+            z-index: 9997;
+            transition: all 0.3s;
+        }
+
+        .score-board:hover {
+            transform: scale(1.2);
+        }
+
+        .score-label {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .score-number {
+            font-size: 30px;
+            color: var(--primary);
+            font-weight: bold;
+            text-align: center;
+                }
+
+        .score-icon {
+            font-size: 26px;
+            text-align: center;
+        
+        }
+
+        .score-animation {
+            animation: scorePopup 0.5s ease-out;
+        }
+
+        @keyframes scorePopup {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(60px, 60px) scale(1.1); }
+        }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 20px 20px; }
+            .nav-links { gap: 20px; margin-right: 0;  }
+            .score-board{
+                top: 100px;
+                  right:  1px;
+            }
+            .logo{
+                font-size: 20px;
+            }
+            .hero { 
+                padding: 0 20px; 
+                flex-direction: column-reverse;
+                gap: 50px;
+            }
+            .hero h2 { font-size: 35px; }
+            .hero h3 { font-size: 35px; }
+            .profile-image { width: 200px; height: 200px;
+            margin-top: 200px;
+            }
+            .profile-image::before { width: 220px; height: 220px; }
+            .profile-image::after { width: 240px; height: 240px; }
+            .section { padding: 80px 20px; }
+            .about-content { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#about">عني</a></li>
+            <li><a href="#projects">المشاريع</a></li>
+            <li><a href="#contact">اتصل بي</a></li>
+        </ul>
+        <a href="./index2.html" class="logo">Ahmed AWM</a>
+    </nav>
+
+    <section class="hero">
+        <div class="bg-animation">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1>مرحباً، اسمي</h1>
+            <h2>Ahmed AWM</h2>
+            <h3>مطور ويب محترف</h3>
+            <p>أنا مطور ويب متخصص في بناء تطبيقات ويب حديثة وسريعة باستخدام أحدث التقنيات والأدوات.</p>
+            <a href="#projects" class="cta-btn">استكشف أعمالي</a>
+        </div>
+
+        <div class="profile-container">
+            <div class="profile-image">
+                <img src="1.jpg" alt="Ahmed AWM">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2 class="section-title">عني</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>أنا مطور ويب شغوف بتحويل الأفكار الإبداعية إلى واقع رقمي ملموس. أملك خبرة واسعة في تطوير واجهات المستخدم التفاعلية.</p>
+                <p>أستمتع بالعمل على مشاريع متنوعة ومثيرة، وأسعى دائماً لتعلم تقنيات جديدة ومواكبة أحدث الاتجاهات في عالم تطوير الويب.</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-item">🛠 HTML & CSS</div>
+                <div class="skill-item">⚡ JavaScript</div>
+                <div class="skill-item">🐍 Python</div>
+                <div class="skill-item">🎨 UI/UX Design</div>
+                <div class="skill-item">✅ API</div>
+                 <div class="skill-item">✨ Creativity</div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <h2 class="section-title">مشاريعي</h2>
+        <div class="projects-grid"></div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="contact-content">
+            <h2>لنتواصل</h2>
+            <p>أنا متاح حالياً للعمل على مشاريع جديدة ومثيرة. لا تتردد في التواصل معي لمناقشة أفكارك!</p>
+            <a href="./me/index.html" class="cta-btn">تواصل معي</a>
+        </div>
+    </section>
+    
+    <footer>
+        <p>© 2025 Ahmed AWM. جميع الحقوق محفوظة.</p>
+    </footer>
+    
+    <div class="cursor-glow"></div>
+    
+    <div class="score-board">
+
+        <div class="score-number" id="scoreDisplay">🍎</div>
+    </div>
+
+   <script>
+// ================== Profile Redirect ==================
+const profile = document.querySelector(".profile-image");
+profile.onclick = () => window.open("./me/index.html", "_blank");
+
+// ================== Project Cards ==================
+const projects = [
+  { path: "./Store-E-Commerce/index.html", device: "PC And Phone", imgs: "./Store-E-Commerce/1.png" },
+  { path: "https://pdfaaaa.wuaze.com/?i=1", device: "PC And Phone", imgs: "./3.PNG" },
+  { path: "./Movie-Search-App/index.html", device: "PC And Phone", imgs: "./Movie-Search-App/1.png" },
+  { path: "./gameX&O/index.html", device: "PC And Phone", imgs: "./gameX&O/1.png" },
+  { path: "./imageGallery/inedx.html", device: "PC And Phone", imgs: "./imageGallery/1.png" },
+    { path: "./time/inedx.html", device: "PC And Phone", imgs: "./time/1.png" },
+        { path: "./Awm_store/inedx.html", device: "PC And Phone", imgs: "./Awm_store/1.png" },
+
+
+];
+
+const colors = [
+  "#00ff88", "#00bfff", "#ff6b6b", "#ffcc00",
+  "#ff00ff", "#00ffaa", "#ffa500", "#ff0080",
+  "#00ffcc", "#00c3ff", "#ff3c3c", "#b366ff"
+];
+
+const projectContainer = document.querySelector(".projects-grid");
+const tagsHTML = `
+  <div class="project-tags">
+    <span class="tag">HTML</span>
+    <span class="tag">CSS</span>
+    <span class="tag">JS</span>
+  </div>`;
+
+projectContainer.innerHTML = projects.map((p, i) => {
+  const name = p.path.split("/")[1]?.replace(/[-_]/g, " ") || "PDF";
+  const color = colors[i % colors.length];
+  return `
+    <div class="project-card" onclick="window.open('${p.path}', '_blank')">
+      <div class="project-image" style="background: linear-gradient(135deg, ${color} 0%, var(--bg-dark) 100%);">
+        <img src="${p.imgs}" alt="${name}">
+      </div>
+      <div class="project-content">
+        <h3 class="project-title">${name}</h3>
+        <p class="project-desc">مشروع يعمل على ${p.device}.</p>
+        ${tagsHTML}
+      </div>
+    </div>`;
+}).join("");
+
+// ================== Rope Trail Effect ==================
+const ropeSegments = [];
+const segmentCount = 20;
+
+for (let i = 0; i < segmentCount; i++) {
+  const segment = document.createElement("div");
+  segment.className = "rope-segment";
+  document.body.appendChild(segment);
+  ropeSegments.push({ element: segment, x: 0, y: 0 });
+}
+
+let mouseX = 0, mouseY = 0;
+document.addEventListener("mousemove", e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animateRope() {
+  let targetX = mouseX, targetY = mouseY;
+  ropeSegments.forEach((segment, index) => {
+    const spring = 0.15;
+    segment.x += (targetX - segment.x) * spring;
+    segment.y += (targetY - segment.y) * spring;
+
+    segment.element.style.left = `${segment.x}px`;
+    segment.element.style.top = `${segment.y}px`;
+    segment.element.style.opacity = 1 - (index / segmentCount) * 0.8;
+    segment.element.style.transform = `translate(-50%, -50%) scale(${1 - (index / segmentCount) * 0.5})`;
+
+    targetX = segment.x;
+    targetY = segment.y;
+  });
+  requestAnimationFrame(animateRope);
+}
+animateRope();
+
+// ================== Cursor Glow ==================
+const glow = document.querySelector(".cursor-glow");
+if (glow) {
+  document.addEventListener("mousemove", e => {
+    glow.style.left = `${e.clientX}px`;
+    glow.style.top = `${e.clientY}px`;
+  });
+}
+
+// ================== Smooth Scroll ==================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", e => {
+    e.preventDefault();
+    const target = document.querySelector(anchor.getAttribute("href"));
+    if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+});
+
+// ================== Navbar Scroll BG ==================
+window.addEventListener("scroll", () => {
+  const navbar = document.querySelector(".navbar");
+  navbar.style.backgroundColor =
+    window.scrollY > 100 ? "rgba(10, 25, 47, 0.98)" : "rgba(10, 25, 47, 0.85)";
+});
+
+// ================== Section Fade In ==================
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting)
+      entry.target.style.animation = "fadeInUp 0.8s ease forwards";
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll(".section").forEach(section => observer.observe(section));
+
+// ================== Apple Collect Game ==================
+
+const apples = [];
+const collectDistance = 60;
+const scoreDisplay = document.getElementById("scoreDisplay");
+
+function createApple() {
+  const apple = document.createElement("div");
+  apple.className = "apple";
+  apple.innerHTML = "🍎";
+
+  const maxX = window.innerWidth - 60;
+  const maxY = window.innerHeight - 60;
+  const x = Math.random() * maxX + 30;
+  const y = Math.random() * maxY + 30;
+
+  apple.style.left = `${x}px`;
+  apple.style.top = `${y}px`;
+
+  document.body.appendChild(apple);
+  apples.push({ element: apple, x, y });
+}
+
+function updateScore() {
+  scoreDisplay.textContent = `🍎`;
+  scoreDisplay.classList.add("score-animation");
+  setTimeout(() => scoreDisplay.classList.remove("score-animation"), 500);
+}
+
+function playCollectSound() {
+  const audio = new Audio("./collect.mp3");
+  audio.volume = 0.3;
+  audio.play();
+}
+
+function checkAppleProximity() {
+  apples.forEach((apple, index) => {
+    const distance = Math.hypot(mouseX - apple.x, mouseY - apple.y);
+    if (distance < collectDistance) {
+      apple.element.classList.add("collected");
+      updateScore();
+      playCollectSound();
+      setTimeout(() => {
+        apple.element.remove();
+        apples.splice(index, 1);
+      }, 400);
+    }
+  });
+}
+
+function maintainApples() {
+  if (apples.length < 1) createApple();
+}
+
+document.addEventListener("mousemove", () => checkAppleProximity());
+setInterval(maintainApples, 3000);
+
+// أول تفاحة تبدأ تلقائيًا
+createApple();
+</script>
+
+</body>
+</html>
