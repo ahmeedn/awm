@@ -785,7 +785,7 @@ projectContainer.innerHTML = projects.map((p, i) => {
         <img src="${p.imgs}" alt="${name}">
       </div>
       <div class="project-content">
-        <h3 class="project-title">${name}</h3>
+        <h3 class="project-title">${name || "HelloApp"}</h3>
         <p class="project-desc">مشروع يعمل على ${p.device}.</p>
         ${tagsHTML}
       </div>
@@ -927,6 +927,7 @@ createApple();
 </body>
 
 </html>
+
 
 
 
