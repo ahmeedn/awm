@@ -777,7 +777,14 @@ const tagsHTML = `
   </div>`;
 
 projectContainer.innerHTML = projects.map((p, i) => {
-  const name = p.path.split("/")[1]?.replace(/[-_]/g, " ") || "PDF";
+ let name = (() => {
+    try {
+        return new URL(p.path).hostname.split(".")[0];
+    } catch {
+        return p.path.split("/")[1]?.replace(/[-_]/g, " ") || "404";
+    }
+})();
+
   const color = colors[i % colors.length];
   return `
     <div class="project-card" onclick="window.open('${p.path}', '_blank')">
@@ -785,7 +792,7 @@ projectContainer.innerHTML = projects.map((p, i) => {
         <img src="${p.imgs}" alt="${name}">
       </div>
       <div class="project-content">
-        <h3 class="project-title">${name || "HelloApp"}</h3>
+        <h3 class="project-title">${name}</h3>
         <p class="project-desc">مشروع يعمل على ${p.device}.</p>
         ${tagsHTML}
       </div>
@@ -927,6 +934,7 @@ createApple();
 </body>
 
 </html>
+
 
 
 
