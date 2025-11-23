@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ahmed AWM - حساباتي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0d0d0d;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -23,37 +24,64 @@
             overflow: hidden;
         }
 
-        /* Animated Background */
+        /* Animated Background Particles */
         body::before {
             content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveBackground 20s linear infinite;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 255, 179, 0.1) 0%, transparent 70%);
+            top: -100px;
+            right: -100px;
+            animation: particleMove1 15s ease-in-out infinite;
         }
 
-        @keyframes moveBackground {
-            0% {
-                transform: translate(0, 0);
+        body::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 204, 141, 0.08) 0%, transparent 70%);
+            bottom: -50px;
+            left: -50px;
+            animation: particleMove2 12s ease-in-out infinite;
+        }
+
+        @keyframes particleMove1 {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
             }
-            100% {
-                transform: translate(50px, 50px);
+            50% {
+                transform: translate(-80px, 80px) scale(1.2);
+                opacity: 0.15;
+            }
+        }
+
+        @keyframes particleMove2 {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.2;
+            }
+            50% {
+                transform: translate(60px, -60px) scale(1.3);
+                opacity: 0.1;
             }
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: #111;
+            border: 1px solid #222;
             border-radius: 30px;
             padding: 50px 40px;
             max-width: 500px;
             width: 100%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(0, 255, 179, 0.1);
             position: relative;
             z-index: 1;
-            animation: fadeInUp 0.6s ease;
+            animation: fadeInUp 0.8s ease;
         }
 
         @keyframes fadeInUp {
@@ -75,17 +103,28 @@
         .avatar {
             width: 120px;
             height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background: linear-gradient(135deg, #00ffb3, #00cc8d);
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
             font-size: 50px;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-            animation: pulse 2s ease-in-out infinite;
+            box-shadow: 
+                0 0 30px rgba(0, 255, 179, 0.6),
+                0 0 60px rgba(0, 255, 179, 0.3),
+                0 10px 50px rgba(0, 0, 0, 0.5);
+            animation: pulse 2s ease-in-out infinite, morphShape 8s ease-in-out infinite;
             position: relative;
             overflow: hidden;
+            border: 3px solid #00ffb3;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
         }
 
         .avatar::before {
@@ -95,7 +134,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 179, 0.3), transparent);
             transform: rotate(45deg);
             animation: shine 3s linear infinite;
         }
@@ -106,6 +145,21 @@
             }
             50% {
                 transform: scale(1.05);
+            }
+        }
+
+        @keyframes morphShape {
+            0%, 100% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+            25% {
+                border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+            }
+            50% {
+                border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+            }
+            75% {
+                border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
             }
         }
 
@@ -120,19 +174,21 @@
 
         h1 {
             font-size: 32px;
-            color: #333;
+            color: #fff;
+            margin-bottom: 10px;
+            font-weight: 900;
+            text-shadow: 0 0 20px rgba(0, 255, 179, 0.3);
+        }
+
+        .subtitle {
+            color: #00ffb3;
+            font-size: 18px;
             margin-bottom: 10px;
             font-weight: 700;
         }
 
-        .subtitle {
-            color: #666;
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-
         .bio {
-            color: #888;
+            color: #aaa;
             font-size: 14px;
             line-height: 1.6;
         }
@@ -144,7 +200,8 @@
         }
 
         .link-item {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: #1a1a1a;
+            border: 1px solid #222;
             color: white;
             padding: 18px 25px;
             border-radius: 15px;
@@ -153,7 +210,7 @@
             align-items: center;
             gap: 15px;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
         }
@@ -165,7 +222,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 179, 0.1), transparent);
             transition: left 0.5s ease;
         }
 
@@ -175,7 +232,11 @@
 
         .link-item:hover {
             transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+            border-color: #00ffb3;
+            box-shadow: 
+                0 10px 30px rgba(0, 255, 179, 0.3),
+                0 0 40px rgba(0, 255, 179, 0.2);
+            background: #222;
         }
 
         .link-item:active {
@@ -184,14 +245,28 @@
 
         .link-icon {
             font-size: 28px;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
+            background: rgba(0, 255, 179, 0.1);
+            border: 1px solid rgba(0, 255, 179, 0.3);
+            border-radius: 12px;
             flex-shrink: 0;
+            transition: 0.3s;
+        }
+
+        .link-item:hover .link-icon {
+            background: rgba(0, 255, 179, 0.2);
+            border-color: #00ffb3;
+            transform: rotate(360deg);
+        }
+
+        .link-icon img {
+            max-width: 35px;
+            max-height: 35px;
+            object-fit: contain;
         }
 
         .link-content {
@@ -201,59 +276,78 @@
 
         .link-title {
             font-size: 18px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 3px;
+            color: #fff;
         }
 
         .link-desc {
             font-size: 13px;
-            opacity: 0.9;
+            opacity: 0.7;
+            color: #aaa;
         }
 
         .link-arrow {
             font-size: 20px;
+            color: #00ffb3;
             opacity: 0.7;
             transition: transform 0.3s ease;
         }
 
         .link-item:hover .link-arrow {
             transform: translateX(-5px);
+            opacity: 1;
         }
 
-        /* Different gradient colors for each link */
-        .link-item:nth-child(1) {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+        /* Special hover effects for each link */
+        .link-item:nth-child(1):hover {
+            box-shadow: 
+                0 10px 30px rgba(37, 211, 102, 0.4),
+                0 0 40px rgba(37, 211, 102, 0.2);
         }
 
-        .link-item:nth-child(2) {
-            background: linear-gradient(135deg, #f093fb, #f5576c);
+        .link-item:nth-child(2):hover {
+            box-shadow: 
+                0 10px 30px rgba(225, 48, 108, 0.4),
+                0 0 40px rgba(225, 48, 108, 0.2);
         }
 
-        .link-item:nth-child(3) {
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
-        }
-
-        .link-item:nth-child(4) {
-            background: linear-gradient(135deg, #43e97b, #38f9d7);
-        }
-
-        .link-item:nth-child(5) {
-            background: linear-gradient(135deg, #fa709a, #fee140);
-        }
-
-        .link-item:nth-child(6) {
-            background: linear-gradient(135deg, #30cfd0, #330867);
-        }
-
-        .link-item:nth-child(7) {
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
+        .link-item:nth-child(3):hover {
+            box-shadow: 
+                0 10px 30px rgba(24, 119, 242, 0.4),
+                0 0 40px rgba(24, 119, 242, 0.2);
         }
 
         .footer {
             text-align: center;
             margin-top: 30px;
-            color: #999;
+            color: #666;
             font-size: 14px;
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #1a1a1a;
+            border: 1px solid #222;
+            color: #00ffb3;
+            padding: 12px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+        }
+
+        .back-btn:hover {
+            background: #222;
+            border-color: #00ffb3;
+            transform: translateX(-5px);
+            box-shadow: 0 5px 20px rgba(0, 255, 179, 0.3);
         }
 
         /* Responsive */
@@ -279,53 +373,58 @@
             .link-title {
                 font-size: 16px;
             }
+
+            .back-btn {
+                top: 15px;
+                left: 30%;
+                padding: 10px 16px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
+    <a href="../index.html" class="back-btn">← الرجوع للرئيسية</a>
+
     <div class="container">
         <div class="profile-section">
-            <div class="avatar"><img src="../2.jpg" width="120px" alt="A"></div>
+            <div class="avatar"><img src="../2.jpg" alt="Ahmed AWM"></div>
             <h1>Ahmed AWM</h1>
             <p class="subtitle">مطور ويب محترف</p>
             <p class="bio">مرحباً بك! هنا تجد جميع حساباتي على منصات التواصل الاجتماعي</p>
         </div>
 
         <div class="links-container">
-            
-            
-            <a href="https://wa.me/201007948964" class="link-item">
+            <a href="https://wa.me/201007948964" class="link-item" target="_blank">
                 <span class="link-arrow">←</span>
                 <div class="link-content">
                     <div class="link-title">WhatsApp</div>
-                    <div class="link-desc">راسلني</div>
+                    <div class="link-desc">راسلني الآن</div>
                 </div>
-                <div class="link-icon"><img src="https://static.whatsapp.net/rsrc.php/v4/yP/r/rYZqPCBaG70.png" width="30px" alt="w"></div>
+                <div class="link-icon"><img src="https://static.whatsapp.net/rsrc.php/v4/yP/r/rYZqPCBaG70.png" alt="WhatsApp"></div>
             </a>
-            
-            
             
             <a href="https://www.instagram.com/ahmed_q9k/" class="link-item" target="_blank">
                 <span class="link-arrow">←</span>
                 <div class="link-content">
                     <div class="link-title">Instagram</div>
+                    <div class="link-desc">تابعني على انستجرام</div>
                 </div>
-                <div class="link-icon"><img src="https://static.cdninstagram.com/rsrc.php/v4/yI/r/VsNE-OHk_8a.png" alt="i"></div>
+                <div class="link-icon"><img src="https://static.cdninstagram.com/rsrc.php/v4/yI/r/VsNE-OHk_8a.png" alt="Instagram"></div>
             </a>
             
-                  <a href="https://www.facebook.com/ahmedmahmoud.825580/" class="link-item" target="_blank">
-                      <span class="link-arrow">←</span>
-                      <div class="link-content">
-                          <div class="link-title">Fcebook</div>
-                      </div>
-                      <div class="link-icon"><img width="70px" src="https://www.logo.wine/a/logo/Facebook/Facebook-f_Logo-Blue-Logo.wine.svg" alt="i"></div>
-                  </a>
-
-
+            <a href="https://www.facebook.com/ahmedmahmoud.825580/" class="link-item" target="_blank">
+                <span class="link-arrow">←</span>
+                <div class="link-content">
+                    <div class="link-title">Facebook</div>
+                    <div class="link-desc">تواصل معي على فيسبوك</div>
+                </div>
+                <div class="link-icon"><img src="https://www.logo.wine/a/logo/Facebook/Facebook-f_Logo-Blue-Logo.wine.svg" alt="Facebook"></div>
+            </a>
         </div>
 
         <div class="footer">
-            <p>© 2025 Ahmed AWM</p>
+            <p>© 2025 Ahmed AWM — جميع الحقوق محفوظة</p>
         </div>
     </div>
 </body>
