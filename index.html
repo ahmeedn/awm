@@ -968,7 +968,23 @@ const projects = [
 const projectContainer = document.querySelector(".projects-grid");
 
 projectContainer.innerHTML = projects.map((p, i) => {
-  const name = p.path.split("/")[1]?.replace(/[-_]/g, " ") || "PDF";
+let name;
+
+
+if (p.path.startsWith("http")) {
+    name = p.path
+        .replace(/^https?:\/\//, "")
+        .replace(/^www\./, "")
+        .split(".")[0];     
+} 
+// لو الرابط داخلي (./)
+else {
+    name = p.path
+        .split("/")[1]                // يأخذ اسم المجلد
+        .replace(/\.[^/.]+$/, "")     // حذف امتداد الملف
+        .replace(/[-_]/g, " ");       // تحويل - و _ لمسافة
+}
+
   return `
     <div class="project-card" onclick="window.open('${p.path}', '_blank')">
       <div class="project-image">
@@ -1025,5 +1041,6 @@ function closePopup() {
     </script>
 </body>
 </html>
+
 
 
